@@ -25,7 +25,6 @@ app.get('/cms', async(req, res) => {
   
   // It's been long enough since we checked the airtable before, so let's call airtable endpoints
   if (now - lastAirtableCall > consts.api.cacheRefreshDuration) {
-    console.log('Need to fetch fresh data, generating cache.')
     const endpoints = Object.keys(consts.airtable.path);
     for (const endpoint of endpoints) {
       await new Promise(async (next) => {
@@ -43,20 +42,9 @@ app.get('/cms', async(req, res) => {
     lastAirtableCall = new Date().getTime();
     res.send(cmsDataCache);
   } else {
-    console.log('cache is fresh enough.')
     res.send(cmsDataCache);
   }
 });
-
-async function getTableDataWithUrl(url) {
-  try {
-    const response = await axios.default.get(url, { headers });
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
 
 app.listen(4200, () => {
   console.log('Listening on *:4200');
