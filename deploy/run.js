@@ -16,7 +16,7 @@ sftp.connect({
 }).then(() => {
   console.log('File transfer successful');
 
-  exec('kill $(lsof -t -i:4200) && cd /api && npm install && npm run dev', {
+  exec('kill $(lsof -t -i:4200) && cd /api && yarn && yarn dev', {
     host: process.env.DEPLOY_TARGET,
     user: process.env.DEPLOY_USER,
     key: '~/.ssh/id_rsa',
