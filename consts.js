@@ -1,6 +1,7 @@
 module.exports = {
   api: {
-    cacheRefreshDuration: 60 * 1000 // 1 minute
+    cacheRefreshDuration: 24 * 60 * 60 * 1000, // 24 hours
+    cacheFilePath: './cms-data-cache.json'
   },
   airtable: {
     base: 'https://api.airtable.com/v0',
