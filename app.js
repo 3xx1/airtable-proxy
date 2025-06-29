@@ -52,7 +52,7 @@ const updateDataCache = async () => {
   // highlight image download
   cmsDataCache['highlights'].records.forEach(async (record) => {
     if (record.fields.thumbnail && record.fields.thumbnail.length > 0) {
-      const imageUrl = record.fields.thumbnail[0]?.url;
+      const imageUrl = record.fields.thumbnail[0].url;
       const recordId = record.id;
       if (imageUrl) {
         const filePath = `${cacheImagesDir}/${recordId}.${record.fields.thumbnail[0].type.split('/').pop()}`;
@@ -64,7 +64,7 @@ const updateDataCache = async () => {
   // download publication images
   cmsDataCache['publications'].records.forEach(async (record) => {
     if (record.fields.thumbnail && record.fields.thumbnail.length > 0) {
-      const imageUrl = record.fields.thumbnail[0]?.url;
+      const imageUrl = record.fields.thumbnail[0].url;
       const recordId = record.id;
       if (imageUrl) {
         const filePath = `${cacheImagesDir}/${recordId}.${record.fields.thumbnail[0].type.split('/').pop()}`;
@@ -76,7 +76,7 @@ const updateDataCache = async () => {
   // download members images
   cmsDataCache['members'].records.forEach(async (record) => {
     if (record.fields.portrait && record.fields.portrait.length > 0) {
-      const imageUrl = record.fields.portrait[0]?.url;
+      const imageUrl = record.fields.portrait[0].url;
       const recordId = record.id;
       if (imageUrl) {
         const filePath = `${cacheImagesDir}/${recordId}_portrait.${record.fields.portrait[0].type.split('/').pop()}`;
@@ -85,7 +85,7 @@ const updateDataCache = async () => {
     }
 
     if (record.fields.cv && record.fields.cv.length > 0) {
-      const cvUrl = record.fields.cv[0]?.url;
+      const cvUrl = record.fields.cv[0].url;
       const recordId = record.id;
       if (cvUrl) {
         const filePath = `${cacheImagesDir}/${recordId}_cv.${record.fields.cv[0].type.split('/').pop()}`;
@@ -97,7 +97,7 @@ const updateDataCache = async () => {
   // download gallery images
   cmsDataCache['gallery'].records.forEach(async (record) => {
     if (record.fields.image && record.fields.image.length > 0) {
-      const imageUrl = record.fields.image[0]?.url;
+      const imageUrl = record.fields.image[0].url;
       const recordId = record.id;
       if (imageUrl) {
         const filePath = `${cacheImagesDir}/${recordId}.${record.fields.image[0].type.split('/').pop()}`;
