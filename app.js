@@ -35,12 +35,20 @@ const updateDataCache = async () => {
   const endpoints = Object.keys(consts.airtable.path);
 
   // remove cache file
-  fs.rmSync(cacheImagesDir, { recursive: true, force: true }, (err) => {
-    if (err) {
-      console.error('Error removing cache-images directory:', err);
+  // fs.rmSync(cacheImagesDir, { recursive: true, force: true }, (err) => {
+  //   if (err) {
+  //     console.error('Error removing cache-images directory:', err);
+  //   }
+  // });
+  
+
+  if (fs.existsSync(cacheImagesDir)) {
+    for (const file of fs.readdirSync(cacheImagesDir)) {
+      fs.rmSync(path.join(cacheImagesDir, file), { recursive: true, force: true });
     }
-  });
-  fs.mkdirSync(cacheImagesDir);
+  } else {
+    fs.mkdirSync(cacheImagesDir);
+  }
   
   let cmsDataCache = {};
   for (const endpoint of endpoints) {
