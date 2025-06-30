@@ -35,7 +35,7 @@ const updateDataCache = async () => {
   const endpoints = Object.keys(consts.airtable.path);
 
   // remove cache file
-  fs.rmdirSync(cacheImagesDir, { recursive: true }, (err) => {
+  fs.rmdirSync(cacheImagesDir, { recursive: true, force: true }, (err) => {
     if (err) {
       console.error('Error removing cache-images directory:', err);
     }
