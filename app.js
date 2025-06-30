@@ -5,6 +5,7 @@ const axios = require('axios');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
+const { exec } = require('child_process');
 
 // consts
 require('dotenv').config();
@@ -45,10 +46,12 @@ const updateDataCache = async () => {
 
   if (fs.existsSync(cacheImagesDir)) {
     for (const file of fs.readdirSync(cacheImagesDir)) {
-      fs.rmSync(path.join(cacheImagesDir, file), { recursive: true, force: true });
+      // fs.rmSync(path.join(cacheImagesDir, file), { recursive: true, force: true });
+      exec(`rm -rf ${path.join(cacheImagesDir, file)}`);
     }
   } else {
-    fs.mkdirSync(cacheImagesDir);
+    // fs.mkdirSync(cacheImagesDir);
+    exec(`mkdir -p ${cacheImagesDir}`);
   }
   
   let cmsDataCache = {};
